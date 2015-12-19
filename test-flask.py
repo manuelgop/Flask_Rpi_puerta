@@ -18,7 +18,7 @@ IMG = "foto.jpg"
 TXT_MSG = "Foto prueba!"
 app = Flask(__name__)
 
-@app.route("/")
+@app.route("/foto")
 def hello():
 	# initialize imgur client
 	im = pyimgur.Imgur(CLIENT_ID)
@@ -30,6 +30,10 @@ def hello():
 	uploaded_image = im.upload_image(IMAGE_DIR + IMG, title=TXT_MSG)
 	link = (uploaded_image.link)
 	user = {'nickname': 'Miguel'}  # fake user
+	return link
+
+@app.route("/")
+def index():
 	return render_template('index.html')
 
 @app.route("/hola")
