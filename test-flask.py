@@ -4,8 +4,8 @@ import picamera
 import time
 
 # name and dimentsions of snapshot image
-IMG_WIDTH = 800
-IMG_HEIGHT = 600
+IMG_WIDTH = 400
+IMG_HEIGHT = 300
 
 # imgur client setup
 CLIENT_SECRET = "35bbaad924b810b11834b3f1ecd2d8a9bae70001"
@@ -25,12 +25,15 @@ def hello():
 	with picamera.PiCamera() as camera:
 			camera.resolution = (IMG_WIDTH, IMG_HEIGHT)
 			camera.start_preview()
-			time.sleep(2)
+			time.sleep(1)
 			camera.capture(IMAGE_DIR + IMG)
 	uploaded_image = im.upload_image(IMAGE_DIR + IMG, title=TXT_MSG)
 	link = (uploaded_image.link)
-	user = {'nickname': 'Miguel'}  # fake user
-	return link
+	templateData = {
+      		'title' : 'HELLO!',
+      		'link': link
+      		}
+	return render_template('foto.html', **templateData)
 
 @app.route("/")
 def index():
