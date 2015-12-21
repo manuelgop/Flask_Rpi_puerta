@@ -39,6 +39,10 @@ def hello():
 def index():
 	return render_template('index.html')
 
+@app.route("/openclose")
+def openclose():
+	return render_template('openclose.html')
+
 @app.route("/hola")
 def hola():
 	return "Estas en un /hola"
