@@ -2,7 +2,12 @@ from flask import Flask, render_template
 import pyimgur
 import picamera
 import time
-
+import RPi.GPIO as GPIO
+#GPIO CONFIGURACION
+GPIO.setmode(GPIO.BCM)
+GPIO.setwarnings(False)
+led = 17
+GPIO.setup(led, GPIO.OUT)
 # name and dimentsions of snapshot image
 IMG_WIDTH = 400
 IMG_HEIGHT = 300
@@ -41,6 +46,10 @@ def index():
 
 @app.route("/openclose")
 def openclose():
+	GPIO.output(led, 0)
+	time.sleep(3)
+	GPIO.output(led, 1)
+	GPIO.cleanup()
 	return render_template('openclose.html')
 
 @app.route("/hola")
