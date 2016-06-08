@@ -13,8 +13,8 @@ IMG_WIDTH = 400
 IMG_HEIGHT = 300
 
 # imgur client setup
-CLIENT_SECRET = "35bbaad924b810b11834b3f1ecd2d8a9bae70001"
-CLIENT_ID = "f62c298b228cb53"
+CLIENT_SECRET = "YOURSECREET"
+CLIENT_ID = "YOURCLIENTID"
 #image DIR
 IMAGE_DIR = "/home/pi/"
 #Image name
